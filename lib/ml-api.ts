@@ -5,9 +5,27 @@ export type StockPrediction = {
   model_accuracy: number;
 };
 
-const apiBaseUrl = (
-  process.env.NEXT_PUBLIC_ML_API_URL || "http://localhost:8000"
-).replace(/\/+$/, "");
+const configuredApiBaseUrl = process.env.NEXT_PUBLIC_ML_API_URL?.replace(
+  /\/+$/,
+  ""
+);
+
+function getApiUrl(path: string): string {
+  if (configuredApiBaseUrl) {
+    return `${configuredApiBaseUrl}${path}`;
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return path;
+  }
+
+  const localBackendUrl =
+    typeof window === "undefined"
+      ? "http://localhost:8000"
+      : `${window.location.protocol}//${window.location.hostname}:8000`;
+
+  return `${localBackendUrl}${path}`;
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -39,7 +57,7 @@ function parsePrediction(value: unknown): StockPrediction {
 }
 
 async function getJson(path: string): Promise<unknown> {
-  const response = await fetch(`${apiBaseUrl}${path}`);
+  const response = await fetch(getApiUrl(path));
   let body: unknown;
 
   try {

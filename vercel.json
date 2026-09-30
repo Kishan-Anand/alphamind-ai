@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": ".",
+      "framework": "nextjs"
+    },
+    "ml-backend": {
+      "root": "ml-backend",
+      "framework": "fastapi"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/predict/(.*)",
+      "destination": {
+        "service": "ml-backend"
+      }
+    },
+    {
+      "source": "/top-picks",
+      "destination": {
+        "service": "ml-backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
+}

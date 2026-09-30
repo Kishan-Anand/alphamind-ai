@@ -7,8 +7,8 @@ FastAPI Random Forest stock-direction prediction backend.
 ## Configure the dashboard
 
 Copy `.env.example` to `.env.local` and fill in the public Supabase URL/key,
-Groq API key, and Finnhub API key. `NEXT_PUBLIC_ML_API_URL` defaults to the
-local FastAPI backend and can be changed when deploying.
+Groq API key, and Finnhub API key. Locally, predictions use the FastAPI backend
+on port 8000 by default.
 
 ```powershell
 Copy-Item .env.example .env.local
@@ -16,6 +16,27 @@ Copy-Item .env.example .env.local
 
 Never commit `.env.local` or put service-role keys or API secrets in browser
 code. `.env.local` is excluded from Git.
+
+## Deploy to Vercel
+
+Import this GitHub repository as a Vercel project. `vercel.json` configures the
+Next.js dashboard and FastAPI prediction backend as services in the same
+project. The dashboard is served at `/`; `/predict/*` and `/top-picks` are
+routed to FastAPI. Leave `NEXT_PUBLIC_ML_API_URL` unset in Vercel so the
+dashboard uses these same-domain routes.
+
+Set these environment variables in the Vercel project settings for Production,
+Preview, and Development as appropriate:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (or `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`)
+- `GROQ_API_KEY`
+- `FINNHUB_API_KEY`
+
+After the first deployment, add the production website URL to Supabase Auth's
+Site URL and Redirect URLs. The prediction service uses the committed trained
+models; Vercel's serverless filesystem is not persistent, so newly trained
+model files will not persist between instances.
 
 ## AlphaMind ML backend
 
