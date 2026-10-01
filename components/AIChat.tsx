@@ -103,13 +103,13 @@ export default function AIChat() {
 
   return (
 
-    <div className="mt-10 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+    <div className="mt-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-4 sm:mt-10 sm:p-6">
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-3">
 
         <div>
 
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-2xl font-bold sm:text-3xl">
             AI Investment Assistant
           </h2>
 
@@ -119,7 +119,7 @@ export default function AIChat() {
 
         </div>
 
-        <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-semibold">
+        <div className="shrink-0 rounded-full bg-green-500/20 px-3 py-2 text-sm font-semibold text-green-400 sm:px-4">
           GPT AI
         </div>
 
@@ -172,7 +172,7 @@ export default function AIChat() {
 
       </div>
 
-      <div className="mt-6 flex gap-3">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
 
         <input
           type="text"
@@ -191,7 +191,7 @@ export default function AIChat() {
 
         <button
           onClick={handleSend}
-          className="bg-green-500 hover:bg-green-600 px-6 rounded-2xl font-bold transition"
+          className="rounded-2xl bg-green-500 px-6 py-3 font-bold transition hover:bg-green-600 sm:py-0"
         >
 
           Send

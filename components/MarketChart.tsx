@@ -39,10 +39,10 @@ export default function MarketChart({ symbol }: Props) {
   }, [symbol, range]);
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 mt-10">
-      <div className="flex items-center justify-between">
+    <div className="mt-8 min-w-0 rounded-3xl border border-zinc-800 bg-zinc-900 p-4 sm:mt-10 sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-2xl font-bold sm:text-3xl">
             {symbol} Price Chart
           </h2>
 
@@ -51,12 +51,12 @@ export default function MarketChart({ symbol }: Props) {
           </p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="mobile-nav-scrollbar flex max-w-full gap-2 overflow-x-auto">
           {["5d", "1mo", "6mo", "1y", "5y"].map((item) => (
             <button
               key={item}
               onClick={() => setRange(item)}
-              className={`px-4 py-2 rounded-full font-semibold ${
+              className={`shrink-0 rounded-full px-3 py-2 text-sm font-semibold sm:px-4 ${
                 range === item
                   ? "bg-green-500 text-black"
                   : "bg-zinc-800 text-zinc-300"
@@ -68,7 +68,7 @@ export default function MarketChart({ symbol }: Props) {
         </div>
       </div>
 
-      <div className="h-[400px] mt-8">
+      <div className="mt-6 h-[280px] min-w-0 sm:mt-8 sm:h-[400px]">
         {data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>

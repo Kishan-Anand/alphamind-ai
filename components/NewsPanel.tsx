@@ -40,10 +40,10 @@ export default function NewsPanel() {
   }, []);
 
   return (
-    <div className="mt-10 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-      <div className="flex items-center justify-between">
+    <div className="mt-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-4 sm:mt-10 sm:p-6">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-2xl font-bold sm:text-3xl">
             AI Market News
           </h2>
 
@@ -52,7 +52,7 @@ export default function NewsPanel() {
           </p>
         </div>
 
-        <div className="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full font-semibold">
+        <div className="shrink-0 rounded-full bg-blue-500/20 px-3 py-2 text-sm font-semibold text-blue-400 sm:px-4">
           AI NEWS
         </div>
       </div>
@@ -63,9 +63,9 @@ export default function NewsPanel() {
             key={index}
             href={item.url}
             target="_blank"
-            className="block bg-zinc-950 border border-zinc-800 rounded-3xl p-6 hover:border-green-500 transition"
+            className="block min-w-0 rounded-3xl border border-zinc-800 bg-zinc-950 p-4 transition hover:border-green-500 sm:p-6"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between gap-3">
               <p className="text-sm text-green-400 font-semibold">
                 {item.source}
               </p>
@@ -75,7 +75,7 @@ export default function NewsPanel() {
               </p>
             </div>
 
-            <h3 className="text-2xl font-bold mt-4 leading-snug">
+            <h3 className="mt-4 text-xl font-bold leading-snug sm:text-2xl">
               {item.headline}
             </h3>
 

@@ -30,16 +30,16 @@ export default function TopMovers() {
   }, [fetchTopPicks]);
 
   return (
-    <div className="mt-10 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-      <div className="flex items-center justify-between">
+    <div className="mt-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-4 sm:mt-10 sm:p-6">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-bold">Top AI Picks</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Top AI Picks</h2>
           <p className="text-zinc-400 mt-2">
             Top 4 ranked by model probability confidence
           </p>
         </div>
 
-        <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-semibold">
+        <div className="shrink-0 rounded-full bg-green-500/20 px-3 py-2 text-sm font-semibold text-green-400 sm:px-4">
           REAL ML
         </div>
       </div>
@@ -56,23 +56,23 @@ export default function TopMovers() {
           return (
             <div
               key={index}
-              className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 hover:scale-[1.02] transition"
+              className="min-w-0 rounded-3xl border border-zinc-800 bg-zinc-950 p-4 transition hover:scale-[1.02] sm:p-6"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-3xl font-bold">{pick.symbol}</h3>
+                  <h3 className="text-2xl font-bold sm:text-3xl">{pick.symbol}</h3>
                   <p className="text-zinc-400 mt-2">
                     Ranked by model confidence
                   </p>
                 </div>
 
-                <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-bold">
+                <div className="shrink-0 rounded-full bg-green-500/20 px-3 py-2 font-bold text-green-400 sm:px-4">
                   #{index + 1}
                 </div>
               </div>
 
               <div className="mt-8">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-3">
                   <p className="text-zinc-400">Model confidence</p>
                   <p className="text-green-400 font-bold">
                     {Number(pick.confidence).toFixed(0)}%

@@ -38,16 +38,16 @@ export default function AIPredictions({ symbols }: Props) {
   }, [loadPredictions]);
 
   return (
-    <div className="mt-10 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-      <div className="flex items-center justify-between">
+    <div className="mt-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-4 sm:mt-10 sm:p-6">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-bold">AI Predictions</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">AI Predictions</h2>
           <p className="text-zinc-400 mt-2">
             Random Forest predictions for selected stocks
           </p>
         </div>
 
-        <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-semibold">
+        <div className="shrink-0 rounded-full bg-green-500/20 px-3 py-2 text-sm font-semibold text-green-400 sm:px-4">
           LIVE ML
         </div>
       </div>
@@ -64,13 +64,13 @@ export default function AIPredictions({ symbols }: Props) {
           return (
             <div
               key={index}
-              className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6"
+              className="min-w-0 rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-6"
             >
-              <div className="flex items-center justify-between">
-                <h3 className="text-3xl font-bold">{stock.symbol}</h3>
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="break-all text-2xl font-bold sm:text-3xl">{stock.symbol}</h3>
 
                 <div
-                  className={`px-4 py-2 rounded-full font-bold ${
+                  className={`shrink-0 rounded-full px-3 py-2 font-bold sm:px-4 ${
                     isUp
                       ? "bg-green-500/20 text-green-400"
                       : "bg-red-500/20 text-red-400"
@@ -83,7 +83,7 @@ export default function AIPredictions({ symbols }: Props) {
               <div className="mt-8">
                 <p className="text-zinc-400">Model probability confidence</p>
 
-                <p className="text-5xl font-bold mt-2">
+                <p className="mt-2 text-4xl font-bold sm:text-5xl">
                   {Number(stock.confidence).toFixed(0)}%
                 </p>
                 <p className="text-sm text-zinc-500 mt-2">

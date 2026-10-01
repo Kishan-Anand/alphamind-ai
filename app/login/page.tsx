@@ -131,7 +131,7 @@ export default function LoginPage() {
       <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-green-500/10 blur-3xl" />
       <div className="absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
 
-      <section className="relative w-full max-w-md rounded-3xl border border-zinc-800 bg-zinc-950/95 p-8 shadow-2xl">
+      <section className="relative w-full max-w-md rounded-3xl border border-zinc-800 bg-zinc-950/95 p-5 shadow-2xl sm:p-8">
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-green-500/30 bg-green-500/10 text-2xl font-bold text-green-400">
             A
@@ -199,7 +199,7 @@ export default function LoginPage() {
               }
               disabled={loading}
               required
-              className="w-full rounded-2xl border border-zinc-800 bg-black px-4 py-4 text-center text-2xl tracking-[0.6em] outline-none transition focus:border-green-500"
+              className="w-full rounded-2xl border border-zinc-800 bg-black px-3 py-4 text-center text-2xl tracking-[0.45em] outline-none transition focus:border-green-500 sm:tracking-[0.6em]"
             />
             <button
               type="submit"

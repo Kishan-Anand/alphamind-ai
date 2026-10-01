@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import DashboardNavigation from "@/components/DashboardNavigation";
 import { fetchTopPicks, type StockPrediction } from "@/lib/ml-api";
 
 export default function PredictionsPage() {
@@ -36,47 +36,13 @@ export default function PredictionsPage() {
   }, [loadPredictions]);
 
   return (
-    <main className="min-h-screen bg-black text-white flex">
-      <aside className="w-64 bg-zinc-950 border-r border-zinc-800 p-6 hidden md:flex flex-col">
-        <h1 className="text-3xl font-bold text-green-400">
-          AlphaMind
-        </h1>
+    <main className="flex min-h-screen w-full flex-col bg-black text-white md:flex-row">
+      <DashboardNavigation activePage="predictions" />
 
-        <nav className="mt-12 space-y-4">
-          <Link
-            href="/dashboard"
-            className="text-zinc-400 px-4 py-3 hover:bg-zinc-900 rounded-2xl transition block"
-          >
-            Dashboard
-          </Link>
-
-          <Link
-            href="/screener"
-            className="text-zinc-400 px-4 py-3 hover:bg-zinc-900 rounded-2xl transition block"
-          >
-            Stock Screener
-          </Link>
-
-          <Link
-            href="/predictions"
-            className="bg-green-500/20 text-green-400 px-4 py-3 rounded-2xl block"
-          >
-            AI Predictions
-          </Link>
-
-          <Link
-            href="/settings"
-            className="text-zinc-400 px-4 py-3 hover:bg-zinc-900 rounded-2xl transition block"
-          >
-            Settings
-          </Link>
-        </nav>
-      </aside>
-
-      <section className="flex-1 p-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-5xl font-bold">
+      <section className="w-full min-w-0 flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="text-3xl font-bold sm:text-4xl xl:text-5xl">
               AI Predictions
             </h1>
 
@@ -87,7 +53,7 @@ export default function PredictionsPage() {
 
           <button
             onClick={loadPredictions}
-            className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-bold transition"
+            className="w-full rounded-2xl bg-green-500 px-6 py-3 font-bold transition hover:bg-green-600 sm:w-auto"
           >
             Refresh
           </button>
@@ -107,7 +73,7 @@ export default function PredictionsPage() {
           Model confidence is not a guarantee of future price movement or investment advice.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        <div className="mt-8 grid grid-cols-1 gap-5 xl:mt-10 xl:grid-cols-2 xl:gap-6">
           {predictions.map((stock, index) => {
             const isUp = stock.prediction === "UP";
 
